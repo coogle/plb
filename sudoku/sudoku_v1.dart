@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'dart:io';
-import 'dart:typeddata';
+import 'dart:typed_data';
 
 class Sudoku {
   final _R = new List<Uint16List>(324);
@@ -95,11 +95,10 @@ class Sudoku {
   }
 }
 
-main()
+main(List<String> argv)
 {
-  final List<String> argv = new Options().arguments;
   final fp = new File(argv[0]);
-  final lines = fp.readAsLinesSync(encoding: Encoding.ASCII);
+  final lines = fp.readAsLinesSync();
   final Sudoku s = new Sudoku();
   for (int i = 0; i < lines.length; ++i) {
     var rst = s.solve(lines[i]);
